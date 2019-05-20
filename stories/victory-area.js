@@ -9,9 +9,12 @@ import { getData, getMixedData, getTimeData, getLogData } from "./data";
 import { getChartDecorator, getPolarChartDecorator } from "./decorators";
 import { fromJS } from "immutable";
 
-storiesOf("VictoryArea", module).add("default rendering", () => <VictoryArea />);
+storiesOf("VictoryArea", module)
+  .addParameters({ component: VictoryArea })
+  .add("default rendering", () => <VictoryArea />);
 
 storiesOf("VictoryArea.theme", module)
+  .addParameters({ component: VictoryArea })
   .addDecorator(getChartDecorator({ theme: VictoryTheme.material }))
   .add("material theme", () => <VictoryArea data={getData(8)} />)
   .add("material theme stacked", () => (
@@ -23,7 +26,9 @@ storiesOf("VictoryArea.theme", module)
       <VictoryArea data={getData(8, "seed-4")} />
     </VictoryStack>
   ));
+
 storiesOf("VictoryArea.theme", module)
+  .addParameters({ component: VictoryArea })
   .addDecorator(getChartDecorator({ theme: VictoryTheme.grayscale }))
   .add("grayscale (default) theme", () => <VictoryArea data={getData(8)} />)
   .add("grayscale (default) stacked", () => (
@@ -37,6 +42,7 @@ storiesOf("VictoryArea.theme", module)
   ));
 
 storiesOf("VictoryArea.interpolation", module)
+  .addParameters({ component: VictoryArea })
   .addDecorator(getChartDecorator())
   .add("basis", () => <VictoryArea data={getData(8)} interpolation="basis" />)
   .add("cardinal", () => <VictoryArea data={getData(8)} interpolation="cardinal" />)
@@ -50,6 +56,7 @@ storiesOf("VictoryArea.interpolation", module)
   .add("stepBefore", () => <VictoryArea data={getData(8)} interpolation="stepBefore" />);
 
 storiesOf("VictoryArea.data", module)
+  .addParameters({ component: VictoryArea })
   .addDecorator(getChartDecorator())
   .add("with data accessors", () => (
     <VictoryArea
@@ -109,6 +116,7 @@ storiesOf("VictoryArea.data", module)
   ));
 
 storiesOf("VictoryArea.labels", module)
+  .addParameters({ component: VictoryArea })
   .addDecorator(getChartDecorator())
   .add("function labels", () => <VictoryArea data={getData(7)} labels={(d) => `x: ${d.x}`} />)
   .add("array labels", () => (
@@ -127,6 +135,7 @@ storiesOf("VictoryArea.labels", module)
   ));
 
 storiesOf("VictoryArea.tooltips", module)
+  .addParameters({ component: VictoryArea })
   .addDecorator(getChartDecorator())
   .add("tooltips", () => (
     <VictoryArea
@@ -159,6 +168,7 @@ storiesOf("VictoryArea.tooltips", module)
   ));
 
 storiesOf("VictoryArea.style", module)
+  .addParameters({ component: VictoryArea })
   .addDecorator(getChartDecorator())
   .add("with styles", () => (
     <VictoryArea
@@ -183,6 +193,7 @@ storiesOf("VictoryArea.style", module)
   ));
 
 storiesOf("VictoryArea.stacked", module)
+  .addParameters({ component: VictoryArea })
   .addDecorator(getChartDecorator())
   .add("stacked area", () => (
     <VictoryStack colorScale="qualitative">
@@ -214,6 +225,7 @@ storiesOf("VictoryArea.stacked", module)
   ));
 
 storiesOf("VictoryArea.scale", module)
+  .addParameters({ component: VictoryArea })
   .addDecorator(getChartDecorator())
   .add("time scale", () => <VictoryArea data={getTimeData(5)} />)
   .add("time scale with labels", () => (
@@ -238,14 +250,17 @@ storiesOf("VictoryArea.scale", module)
   ));
 
 storiesOf("VictoryArea.scale", module)
+  .addParameters({ component: VictoryArea })
   .addDecorator(getChartDecorator({ scale: { y: "log" } }))
   .add("log scale", () => <VictoryArea data={getLogData(7)} />)
   .add("log scale (horizontal)", () => <VictoryArea horizontal data={getLogData(7)} />);
 
-storiesOf("VictoryArea.polar", module).add("Polar Area", () => (
-  <VictoryArea polar theme={VictoryTheme.material} data={getData(7)} />
-));
 storiesOf("VictoryArea.polar", module)
+  .addParameters({ component: VictoryArea })
+  .add("Polar Area", () => <VictoryArea polar theme={VictoryTheme.material} data={getData(7)} />);
+
+storiesOf("VictoryArea.polar", module)
+  .addParameters({ component: VictoryArea })
   .addDecorator(getPolarChartDecorator())
   .add("Polar Area with chart", () => <VictoryArea data={getData(7)} />)
   .add("Polar Area with categorical data", () => (
@@ -266,7 +281,9 @@ storiesOf("VictoryArea.polar", module)
       <VictoryArea data={getData(7, "seed-2")} />
     </VictoryStack>
   ));
+
 storiesOf("VictoryArea.polar", module)
+  .addParameters({ component: VictoryArea })
   .addDecorator(getPolarChartDecorator({ innerRadius: 50 }))
   .add("Polar Area with innerRadius", () => <VictoryArea data={getData(7)} />)
   .add("Polar stacked area with innerRadius", () => (
