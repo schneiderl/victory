@@ -1,16 +1,23 @@
-import { configure, addDecorator } from "@storybook/react";
 import React from "react";
-import "react-chromatic/storybook-addon";
-import { setOptions } from "@storybook/addon-options";
+import { configure, addDecorator, addParameters } from "@storybook/react";
+import { DocsPage } from "@storybook/addon-docs/blocks";
+import { getPropDefs } from "@storybook/addon-docs/react";
 
-setOptions({
-  name: "Victory",
-  url: "https://formidable.com/open-source/victory",
-  goFullScreen: false,
-  showLeftPanel: true,
-  showDownPanel: false,
-  sortStoriesByKind: true,
-  hierarchySeparator: /\./
+addParameters({
+  options: {
+    name: "Victory",
+    url: "https://formidable.com/open-source/victory",
+    goFullScreen: false,
+    showLeftPanel: true,
+    showDownPanel: false,
+    sortStoriesByKind: true,
+    hierarchySeparator: /\./,
+    docs: {
+      inlineStories: true,
+      getPropDefs
+    }
+  },
+  docs: DocsPage
 });
 
 const storyWrapper = (story) => {
